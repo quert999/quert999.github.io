@@ -93,16 +93,16 @@
 
 
 
-<meta name="description" content="我有一头小毛驴，可是我从来都不骑。面对疾风吧！！！">
+<meta name="description" content="我有一头小毛驴，可是我从来都不骑。面对疾风吧！！！ 如果你在onReceive去开线程进行异步操作或者打开Dialog都有可能在没达到你要的结果时进程就被系统杀掉。因为这个进程可能只有这个Receiver这个组件在运行，当Receiver也执行完后就是一个empty进程，是最容易被系统杀掉的。这一段好像大家都这么说，但是我实测的时候，发现并不像文中这样。打开的子进程会一直存在，就好像servic">
 <meta property="og:type" content="article">
 <meta property="og:title" content="First Night">
 <meta property="og:url" content="http://quert999.github.io/2017/06/08/newTest/index.html">
 <meta property="og:site_name" content="rush">
-<meta property="og:description" content="我有一头小毛驴，可是我从来都不骑。面对疾风吧！！！">
-<meta property="og:updated_time" content="2017-06-08T08:54:21.853Z">
+<meta property="og:description" content="我有一头小毛驴，可是我从来都不骑。面对疾风吧！！！ 如果你在onReceive去开线程进行异步操作或者打开Dialog都有可能在没达到你要的结果时进程就被系统杀掉。因为这个进程可能只有这个Receiver这个组件在运行，当Receiver也执行完后就是一个empty进程，是最容易被系统杀掉的。这一段好像大家都这么说，但是我实测的时候，发现并不像文中这样。打开的子进程会一直存在，就好像servic">
+<meta property="og:updated_time" content="2017-06-19T03:02:32.868Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="First Night">
-<meta name="twitter:description" content="我有一头小毛驴，可是我从来都不骑。面对疾风吧！！！">
+<meta name="twitter:description" content="我有一头小毛驴，可是我从来都不骑。面对疾风吧！！！ 如果你在onReceive去开线程进行异步操作或者打开Dialog都有可能在没达到你要的结果时进程就被系统杀掉。因为这个进程可能只有这个Receiver这个组件在运行，当Receiver也执行完后就是一个empty进程，是最容易被系统杀掉的。这一段好像大家都这么说，但是我实测的时候，发现并不像文中这样。打开的子进程会一直存在，就好像servic">
 
 
 
@@ -322,6 +322,7 @@
       
         <blockquote>
 <p>我有一头<strong>小毛驴</strong>，可是我从来都不骑。<br>面对疾风吧！！！</p>
+<p>如果你在onReceive去开线程进行异步操作或者打开Dialog都有可能在没达到你要的结果时进程就被系统杀掉。因为这个进程可能只有这个Receiver这个组件在运行，当Receiver也执行完后就是一个empty进程，是最容易被系统杀掉的。<br>这一段好像大家都这么说，但是我实测的时候，发现并不像文中这样。<br>打开的子进程会一直存在，就好像service在destroy之后，并不会关闭它的子进程一样，如果要杀死这个进程，可能要长按home关闭进程或者等资源不够进程被强制关闭才可以。<br>其次想要打开dialog，只能使用onReceiver的context，而这个context是applicationContext。首先需要悬浮窗权限才可以打开，其次打开之后生命周期和application是一样的。<br>至于onReceive方法，和UI线程是一个线程，不存在新的进程，一个app应该只有一个进程。所以只要注意onReceive方法不能进行耗时操作以避免anr就行。</p>
 </blockquote>
 
       
